@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Alerts - SizaSA</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #eee;
+      position: relative;
+      z-index: 0;
+      background-image: url("images/background.jpg");
+      background-repeat: repeat-x;
+      background-size: calc(100vw / 3) 100vh;
+      background-position: top left;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      filter: brightness(0.3);
+      background-image: inherit;
+      background-repeat: inherit;
+      background-size: inherit;
+      background-position: inherit;
+      z-index: -2;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .alert-section {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #444;
+    }
+
+    .alert-section h2 {
+      color: #4FC3F7;
+      margin-bottom: 10px;
+    }
+
+    .alert-section p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Health Alerts</h1>
+
+    <div class="alert-section">
+      <h2>🦠 New Sickness Alert: NorV-Flu</h2>
+      <p>A new virus strain called NorV-Flu has been reported in parts of South Africa. It causes fever, fatigue, and muscle pain. It spreads through droplets and surface contact. Wash hands often and avoid close contact if unwell.</p>
+    </div>
+
+    <div class="alert-section">
+      <h2>🏃 Easy Exercises to Stay Fit</h2>
+      <p>• 10-minute morning stretches<br>
+         • 15-minute daily walk<br>
+         • Home exercises like squats, sit-ups, and jumping jacks<br>
+         • Try dancing for cardio and stress relief!</p>
+    </div>
+
+    <div class="alert-section">
+      <h2>🥗 Foods That Keep You Healthy</h2>
+      <p>Eat more of: seasonal fruits, leafy greens, nuts, lean proteins, and whole grains. Avoid processed and sugary foods. Stay hydrated with clean water or herbal teas.</p>
+    </div>
+
+    <div class="alert-section">
+      <h2>🤰 Pregnancy Health Update</h2>
+      <p>Health authorities recommend regular prenatal checkups. Stay away from raw fish, undercooked meat, and unpasteurized dairy. Take prenatal vitamins with folic acid and iron. Light walking and stretching are safe forms of exercise.</p>
+    </div>
+
+    <div class="alert-section">
+      <h2>🌿 Seasonal Wellness Tips</h2>
+      <p>Winter is here! Protect yourself from flu and cold by dressing warmly, using hand sanitizer, and getting the flu vaccine. Keep your living space ventilated to avoid mold and viruses.</p>
+    </div>
+
+    <div class="alert-section">
+      <h2>🧠 Mental Wellness Corner</h2>
+      <p>• Breathe deeply and meditate 5 minutes daily<br>
+         • Talk to someone you trust when overwhelmed<br>
+         • Avoid doom-scrolling; take breaks from your phone<br>
+         • Journaling or coloring reduces anxiety</p>
+    </div>
+
+  </div>
+</body>
+</html>

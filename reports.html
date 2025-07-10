@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Reports - SizaSA</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    h2, h3 {
+      text-align: center;
+      color: #fff;
+      margin-top: 1.5rem;
+    }
+
+    .charts-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    canvas {
+      background: rgba(20, 20, 20, 0.9);
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+
+    .report-table {
+      width: 100%;
+      max-width: 1000px;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      color: #fff;
+    }
+
+    .report-table th, .report-table td {
+      border: 1px solid #444;
+      padding: 0.8rem;
+      text-align: left;
+    }
+
+    .report-table th {
+      background-color: #222;
+      color: #4db8ff;
+    }
+
+    .report-table tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .report-table tr:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .back-button {
+      display: block;
+      margin: 2rem auto;
+      text-align: center;
+      padding: 0.8rem 2rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background-color: #005fa3;
+    }
+
+    p.explanation {
+      text-align: center;
+      max-width: 700px;
+      margin: 0.5rem auto 1.5rem;
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h2>📊 Report Overview</h2>
+
+    <div class="charts-container">
+      <div>
+        <h3>Reports by Type</h3>
+        <p class="explanation">
+          This bar chart shows how many reports have been submitted in each category (like robbery, symptoms, or appointments).
+          The taller the bar, the more common that type of report is. This helps us understand what issues happen most often in your community.
+        </p>
+        <canvas id="typeChart" height="300"></canvas>
+      </div>
+      <div>
+        <h3>Reports Over Time</h3>
+        <p class="explanation">
+          This line chart shows how many total reports were submitted on each day. It helps us spot patterns—like if certain days are busier,
+          or if emergencies are increasing over time.
+        </p>
+        <canvas id="timeChart" height="300"></canvas>
+      </div>
+    </div>
+
+    <h2>📋 Report Details</h2>
+    <p class="explanation">
+      Below is a list of all submitted reports, including the date, type, a short description, and current status.
+      This helps you track what you've reported and what is being handled.
+    </p>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows will be added by JavaScript -->
+      </tbody>
+    </table>
+
+    <button class="back-button" onclick="window.location.href='dashboard.html'">⬅ Back to Dashboard</button>
+  </div>
+
+  <script>
+    // Simulated live data
+    const reportData = [
+      { date: '2025-07-10', type: 'Symptoms', description: 'Fever and cough reported', status: 'Reviewed' },
+      { date: '2025-07-09', type: 'Robbery', description: 'Break-in at spaza shop', status: 'Under Review' },
+      { date: '2025-07-08', type: 'Appointment', description: 'Checkup booked at Bara Hospital', status: 'Confirmed' },
+      { date: '2025-07-08', type: 'Domestic Violence', description: 'Neighbor reported screaming', status: 'Escalated' },
+      { date: '2025-07-07', type: 'Symptoms', description: 'Reported nausea and dizziness', status: 'Follow-up Needed' },
+      { date: '2025-07-06', type: 'Hijacking', description: 'Vehicle taken near traffic light', status: 'Investigating' }
+    ];
+
+    // Populate the table
+    const tableBody = document.querySelector(".report-table tbody");
+    reportData.forEach(r => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${r.date}</td>
+        <td>${r.type.includes('Violence') || r.type === 'Robbery' || r.type === 'Hijacking' ? 'Crime - ' + r.type : 'Medical - ' + r.type}</td>
+        <td>${r.description}</td>
+        <td>${r.status}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+
+    // Process data for charts
+    const typeCount = {};
+    const timeCount = {};
+
+    reportData.forEach(r => {
+      const type = r.type;
+      const date = r.date;
+      typeCount[type] = (typeCount[type] || 0) + 1;
+      timeCount[date] = (timeCount[date] || 0) + 1;
+    });
+
+    // Chart 1: Type
+    const ctxType = document.getElementById('typeChart').getContext('2d');
+    new Chart(ctxType, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(typeCount),
+        datasets: [{
+          label: 'Number of Reports',
+          data: Object.values(typeCount),
+          backgroundColor: ['#e74c3c', '#f39c12', '#8e44ad', '#3498db', '#27ae60']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#ccc' },
+            grid: { color: '#444' }
+          },
+          x: {
+            ticks: { color: '#ccc' },
+            grid: { color: '#444' }
+          }
+        }
+      }
+    });
+
+    // Chart 2: Time
+    const ctxTime = document.getElementById('timeChart').getContext('2d');
+    const sortedDates = Object.keys(timeCount).sort();
+    const sortedCounts = sortedDates.map(d => timeCount[d]);
+
+    new Chart(ctxTime, {
+      type: 'line',
+      data: {
+        labels: sortedDates,
+        datasets: [{
+          label: 'Total Reports',
+          data: sortedCounts,
+          borderColor: '#4db8ff',
+          backgroundColor: 'rgba(77, 184, 255, 0.2)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#ccc' },
+            grid: { color: '#444' }
+          },
+          x: {
+            ticks: { color: '#ccc' },
+            grid: { color: '#444' }
+          }
+        },
+        plugins: {
+          legend: { labels: { color: '#ccc' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

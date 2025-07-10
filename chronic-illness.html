@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chronic Illness Management - SizaSA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #eee;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: url("images/background.jpg");
+      background-repeat: repeat-x;
+      background-size: calc(100vw / 3) 100vh;
+      background-position: top left;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      filter: brightness(1.4);
+      background-image: inherit;
+      background-repeat: inherit;
+      background-size: inherit;
+      background-position: inherit;
+      z-index: -2;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1;
+    }
+    .card {
+      background-color: rgba(30, 30, 30, 0.9);
+      border-radius: 12px;
+      padding: 2rem;
+      backdrop-filter: blur(6px);
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+      margin-bottom: 2rem;
+    }
+    .card h2 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+    .section {
+      background-color: rgba(50, 50, 50, 0.8);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .section h3 {
+      margin-top: 0;
+      color: #4db8ff;
+    }
+    .section p, .section label {
+      margin: 0.5rem 0;
+    }
+    .btn-back {
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-back:hover {
+      background-color: #005fa3;
+    }
+    input[type="time"], input[type="date"], input[type="text"], select {
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      background-color: #222;
+      color: #fff;
+      border: none;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    .form-control {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="card">
+      <h2>❤️ Chronic Illness: Diabetes</h2>
+
+      <!-- Disease Selector -->
+      <div class="form-control" style="text-align: center; margin-bottom: 1.5rem;">
+        <label for="disease-select">Not diabetic? Choose another condition:</label><br />
+        <select id="disease-select" onchange="alert('Functionality to change condition is coming soon.')">
+          <option value="diabetes" selected>Diabetes</option>
+          <option value="hypertension">Hypertension</option>
+          <option value="HIV">HIV</option>
+          <option value="asthma">Asthma</option>
+          <option value="cholesterol">High Cholesterol</option>
+        </select>
+      </div>
+
+      <!-- Content for Diabetes -->
+      <div class="section">
+        <h3>🍽 Diet Recommendation</h3>
+        <p>- Low sugar pap</p>
+        <p>- Fresh vegetables</p>
+        <p>- Lean proteins (e.g., chicken, beans)</p>
+        <p>- Avoid sugary drinks and white bread</p>
+      </div>
+
+      <div class="section">
+        <h3>⏰ Set Medication Reminder</h3>
+        <div class="form-control">
+          <label for="medication-time">Time to take medication:</label>
+          <input type="time" id="medication-time" name="medication-time">
+        </div>
+        <div class="form-control">
+          <label for="medication-notes">Notes:</label>
+          <input type="text" id="medication-notes" placeholder="e.g., Take with food">
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>📈 Track Health</h3>
+        <div class="form-control">
+          <label for="sugar-level">Sugar Level (mmol/L):</label>
+          <input type="text" id="sugar-level" placeholder="e.g., 6.5">
+        </div>
+        <div class="form-control">
+          <label for="weight">Weight (kg):</label>
+          <input type="text" id="weight" placeholder="e.g., 70">
+        </div>
+        <div class="form-control">
+          <label for="track-date">Date:</label>
+          <input type="date" id="track-date">
+        </div>
+      </div>
+
+      <button class="btn-back" onclick="window.history.back()">⬅ Back to Dashboard</button>
+    </div>
+  </div>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SizaSA Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="overlay">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <button onclick="location.href='profile.html'">👤 Profile</button>
+      <button onclick="logout()">🚪 Logout</button>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <h1>SizaSA Dashboard</h1>
+      <p class="tagline">Emergency Help at Your Fingertips</p>
+    </header>
+
+    <!-- Dashboard Cards -->
+    <section class="dashboard-grid">
+      <div class="card">
+        <h2>Report Crime</h2>
+        <p>Submit incident reports with media and location.</p>
+        <button onclick="location.href='report-crime.html'">Report Now</button>
+      </div>
+
+      <div class="card">
+        <h2>Medical Emergency</h2>
+        <p>Request immediate health assistance.</p>
+        <button onclick="location.href='medical-help.html'">Request Help</button>
+      </div>
+
+      <div class="card">
+        <h2>View All Reports</h2>
+        <p>Check submitted incidents and statuses.</p>
+        <button onclick="location.href='reports.html'">View</button>
+      </div>
+
+      <div class="card">
+        <h2>Safety Tips & Alerts</h2>
+        <p>Get real-time safety alerts and helpful tips.</p>
+        <button onclick="location.href='safety-tips-and-alerts.html'">View Tips</button>
+      </div>
+    </section>
+
+    <!-- Emergency Call Buttons -->
+    <div class="emergency-call-buttons bottom-fixed">
+      <button class="emergency-call saps" onclick="window.location.href='tel:10111'">📞 Call SAPS</button>
+      <button class="emergency-call health" onclick="window.location.href='tel:112'">🚑 Call Health</button>
+    </div>
+  </div>
+
+  <!-- Logout Script -->
+  <script>
+    function logout() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

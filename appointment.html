@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment - SizaSA</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #eee;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: url("images/background.jpg");
+      background-repeat: repeat-x;
+      background-size: calc(100vw / 3) 100vh;
+      background-position: top left;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      filter: brightness(0.3);
+      background-image: inherit;
+      background-repeat: inherit;
+      background-size: inherit;
+      background-position: inherit;
+      z-index: -2;
+    }
+
+    /* Form Box */
+    .form-box {
+      max-width: 400px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #444;
+    }
+
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="date"],
+    input[type="time"],
+    select,
+    textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #1976D2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1565C0;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Book an Appointment</h2>
+    <form action="#" method="post">
+      <label for="facility">Choose a Hospital/Clinic:</label>
+      <select id="facility" name="facility" required>
+        <option value="">-- Select Facility --</option>
+        <option value="chris_hani">Chris Hani Baragwanath Hospital (Soweto)</option>
+        <option value="charlotte_maxeke">Charlotte Maxeke Hospital (Johannesburg)</option>
+        <option value="steve_biko">Steve Biko Academic Hospital (Pretoria)</option>
+        <option value="groote_schuur">Groote Schuur Hospital (Cape Town)</option>
+        <option value="tygerberg">Tygerberg Hospital (Cape Town)</option>
+        <option value="greys">Grey's Hospital (Pietermaritzburg)</option>
+        <option value="addington">Addington Hospital (Durban)</option>
+        <option value="livingstone">Livingstone Hospital (Gqeberha)</option>
+        <option value="universitas">Universitas Hospital (Bloemfontein)</option>
+        <option value="nkosi_albert">Nkosi Albert Luthuli Central Hospital (Durban)</option>
+      </select>
+
+      <label for="date">Select Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Select Time:</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="type">Appointment Type:</label>
+      <select id="type" name="type" required>
+        <option value="">-- Select Type --</option>
+        <option value="doctor">Doctor</option>
+        <option value="trauma">Trauma Counselor</option>
+        <option value="social">Social Worker</option>
+        <option value="Health tests">Nurse</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="notes">Additional Notes:</label>
+      <textarea id="notes" name="notes" rows="4" placeholder="Reason for the appointment..."></textarea>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+</body>
+</html>

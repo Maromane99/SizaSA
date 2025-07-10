@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SizaSA - Health Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #eee;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: url("images/background.jpg");
+      background-repeat: repeat-x;
+      background-size: calc(100vw / 3) 100vh;
+      background-position: top left;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      filter: brightness(1.4);
+      background-image: inherit;
+      background-repeat: inherit;
+      background-size: inherit;
+      background-position: inherit;
+      z-index: -2;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .card {
+      background-color: rgba(30, 30, 30, 0.9);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #fff;
+    }
+    .card button {
+      margin-top: 1rem;
+      padding: 0.5rem 1.2rem;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background-color: #005fa3;
+    }
+    .emergency-call-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .emergency-call {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+    }
+    .emergency-call.health {
+      background-color: #009900;
+    }
+    .emergency-call.health:hover {
+      background-color: #006600;
+    }
+    @media screen and (max-width: 600px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <h1>🩺 Health Services Dashboard</h1>
+    </header>
+
+    <div class="emergency-call-buttons">
+      <button class="emergency-call health">
+        🚑 Request Ambulance
+      </button>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card">
+        <h2>🏥 Hospital Status</h2>
+        <button onclick="location.href='hospital-status.html'">View</button>
+      </div>
+      <div class="card">
+        <h2>❤️ Chronic Illness</h2>
+        <button onclick="location.href='chronic-illness.html'">Manage</button>
+      </div>
+      <div class="card">
+        <h2>🩺 Symptoms</h2>
+        <button onclick="location.href='symptoms.html'">Check</button>
+      </div>
+      <div class="card">
+        <h2>📅 Appointment</h2>
+        <button onclick="location.href='appointment.html'">Book</button>
+      </div>
+      <div class="card">
+        <h2>⚠️ Health Alerts</h2>
+        <button onclick="location.href='health-alerts.html'">View</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Symptoms - SizaSA</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #eee;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: url("images/background.jpg");
+      background-repeat: repeat-x;
+      background-size: calc(100vw / 3) 100vh;
+      background-position: top left;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      filter: brightness(0.3);
+      background-image: inherit;
+      background-repeat: inherit;
+      background-size: inherit;
+      background-position: inherit;
+      z-index: -2;
+    }
+
+    /* Form Box */
+    .form-box {
+      max-width: 400px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #444;
+    }
+
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #1976D2;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1565C0;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Report Your Symptoms</h2>
+    <form action="#" method="post">
+      <label>Select symptoms you’re experiencing:</label><br>
+      <label><input type="checkbox" name="symptoms" value="Fever"> Fever</label>
+      <label><input type="checkbox" name="symptoms" value="Cough"> Cough</label>
+      <label><input type="checkbox" name="symptoms" value="Shortness of breath"> Shortness of breath</label>
+      <label><input type="checkbox" name="symptoms" value="Chest pain"> Chest pain</label>
+      <label><input type="checkbox" name="symptoms" value="Fatigue"> Fatigue</label>
+      <label><input type="checkbox" name="symptoms" value="Headache"> Headache</label>
+
+      <label for="other">Other Symptoms:</label>
+      <input type="text" id="other" name="other" placeholder="e.g., sore throat, nausea" />
+
+      <label for="notes">Additional Details:</label>
+      <textarea id="notes" name="notes" rows="4" placeholder="Describe your symptoms..."></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
